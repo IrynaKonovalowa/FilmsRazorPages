@@ -1,0 +1,51 @@
+﻿@page
+@model FilmsRazorPages.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div style="background-color:antiquewhite; box-shadow: 0px 0px 20px darkorange inset; padding: 20px 20px 40px 20px">
+    <div class="name" style="margin-left: 45px;">A propos du film:</div>
+
+    <div class="film">
+        <div class="poster">
+            <img class=" img" src="@Html.DisplayFor(model => model.Film.Poster) " />
+        </div>
+        <div class="all">
+            <div class="name">
+                @Html.DisplayFor(model => model.Film.Name)
+            </div>
+            <div>
+                <p>
+                    @Html.DisplayNameFor(model => model.Film.Genre): <span style="font-size: 20px;">
+                        @Html.DisplayFor(model => model.Film.Genre)
+                    </span>
+                </p>
+                <p>
+                    @Html.DisplayNameFor(model => model.Film.Realisateur): <span style="font-size: 20px;">
+                        @Html.DisplayFor(model => model.Film.Realisateur)
+                    </span>
+                </p>
+                <p>
+                    @Html.DisplayNameFor(model => model.Film.Anne): <span style="font-size: 20px;">
+                        @Html.DisplayFor(model => model.Film.Anne)
+                    </span>
+                </p>
+                <p class="discription">
+                    &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Film.Description)
+                </p>
+                <div style=" display:flex">
+
+                    <div class=" but">
+                        <a style="color:ghostwhite; text-decoration:none" asp-page="./Edit" asp-route-id="@Model?.Film.Id">Modifier</a>
+                    </div>
+                    <div class=" but">
+                        <a style="color:ghostwhite; text-decoration:none" asp-page="./Index">Retour a la Liste</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
