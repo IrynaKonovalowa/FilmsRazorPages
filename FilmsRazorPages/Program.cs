@@ -1,4 +1,10 @@
+using FilmsRazorPages.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<ClassContext>(options => options.UseSqlServer(connection));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -14,6 +20,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
