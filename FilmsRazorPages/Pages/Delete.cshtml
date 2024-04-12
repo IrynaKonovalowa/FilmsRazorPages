@@ -1,0 +1,54 @@
+﻿@page
+@model FilmsRazorPages.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div style="background-color:antiquewhite; box-shadow: 0px 0px 20px darkorange inset; padding: 20px 20px 40px 20px">
+    <div class="name" style="margin-left: 45px;" >Etes-vous sur de vouloir supprimer ce film?</div>
+
+        <div class="film">
+            <div class="poster">
+            <img class=" img" src="@Html.DisplayFor(model => model.Film.Poster) " />
+            </div>
+            <div class="all">
+                <div class="name">
+                    @Html.DisplayFor(model => model.Film.Name)
+                </div>
+                <div>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Film.Genre): <span style="font-size: 20px;">
+                            @Html.DisplayFor(model => model.Film.Genre)
+                        </span>
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Film.Realisateur): <span style="font-size: 20px;">
+                            @Html.DisplayFor(model => model.Film.Realisateur)
+                        </span>
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Film.Anne): <span style="font-size: 20px;">
+                            @Html.DisplayFor(model => model.Film.Anne)
+                        </span>
+                    </p>
+                    <p class="discription">
+                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.Film.Description)
+                    </p>
+
+                <form method="post">
+        <input type="hidden" asp-for="Film.Id" />
+        <div style=" display:flex">
+        <div class=" but">
+        <input class ="suppr"style="color: red; border: 0px;" type="submit" value="Supprimer"/>
+        </div>
+        <div class=" but">
+        <a style="color:ghostwhite; text-decoration:none" asp-page="./Index">Retour a la Liste</a>
+        </div>
+        </div>
+    </form>
+            </div>
+</div>
+</div>
+</div>
