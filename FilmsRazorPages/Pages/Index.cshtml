@@ -1,10 +1,55 @@
 ﻿@page
-@model IndexModel
+@model FilmsRazorPages.Pages.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="back" sstyle="background-image: url( /Background/kino.png)">
+    <div class="headline">10 meilleurs films</div>
+    <p style="margin-left: 80px;">
+        <a class="animated-button1" asp-page="Create">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Ajouter un film
+        </a>
+    </p>
+    @foreach (var item in Model.Film)
+    {            
+        <div class="film" >
+            <div class="poster" >
+                <img class=" img" src="@Html.DisplayFor(modelItem => item.Poster) " />
+            </div>
+            <div class="all">
+                <div class="name">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+                   <div>
+                    <p> @Html.DisplayNameFor(model => item.Genre): <span style="font-size: 20px;">
+                            @Html.DisplayFor(modelItem => item.Genre) </span>
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => item.Realisateur): <span style="font-size: 20px;">
+                            @Html.DisplayFor(modelItem => item.Realisateur)</span>
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => item.Anne): <span style="font-size: 20px;">
+                            @Html.DisplayFor(modelItem => item.Anne)
+                        </span>
+                    </p>
+                    <div class=" but" style="width:193px; ">
+                        <a style="margin-left:25px; color:ghostwhite; text-decoration:none" asp-page="Details" asp-route-id="@item.Id">A propos du film</a>
+                    </div>
+                    <p></p>
+                    <div style=" display:flex">
+                        <div class=" but"> <a style="color:ghostwhite; text-decoration:none" asp-page="Edit" asp-route-id="@item.Id">Modifier</a></div>
+                        <div class=" but"> <a style="color:ghostwhite; text-decoration:none" asp-page="Delete" asp-route-id="@item.Id">Supprimer</a></div>
+                    </div>
+                  </div>
+            </div>
+       </div>
+    }
+ </div>
